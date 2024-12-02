@@ -50,6 +50,21 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper.ExecuteNonQuery(query, parameters);
             return Ok("Member added successfully.");
         }
+        [HttpPost]
+        public ActionResult AddMemberToList([FromBody] Member member)
+        {
+            string query = "insert into members (Name,Email,PhoneNumber, membershipDate) " +
+                           "values (@name,@email,@phonenumber,@membershipdate)";
+            var parameters = new[]
+            {
+                new SqlParameter("@Name",member.Name),
+                new SqlParameter("@email", member.Email),
+                new SqlParameter("@phonenumber",member.PhoneNumber),
+                new SqlParameter("@membershipdate",member.MembershipDate)
+            };
+            _databaseHelper.ExecuteNonQuery(query,parameters);
+            return Ok("Member added and that member is a part of current member list ");
+        }
 
         [HttpPut("{id}")]
         public IActionResult UpdateMember(int id, [FromBody] Member member)
