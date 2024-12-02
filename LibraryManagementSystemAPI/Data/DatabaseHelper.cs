@@ -20,7 +20,7 @@ namespace LibraryManagementSystemAPI.Data
                 {
                     using (var cmd = new SqlCommand(query, conn))
                     {
-                        if (parameters?.Length > 0) // Check if parameters are not null and contain elements
+                        if (parameters?.Length > 0)//Check if parameters are not null and contain elements
                         {
                             cmd.Parameters.AddRange(parameters);
                         }
