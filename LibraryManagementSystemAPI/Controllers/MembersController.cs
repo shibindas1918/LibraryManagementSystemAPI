@@ -39,7 +39,7 @@ namespace LibraryManagementSystemAPI.Controllers
                 return NotFound("Member not found.");
             return Ok(result);
         }
-        // Post method to add a member 
+        // Post method to add a Member 
         [HttpPost]
         public IActionResult AddMember([FromBody] Member member)
         {
@@ -56,7 +56,7 @@ namespace LibraryManagementSystemAPI.Controllers
             return Ok("Member added successfully.");
         }
 
-         // head method for Member 
+         // Head method for Member 
         [HttpHead]
         public IActionResult Header(Member header)
         {

@@ -25,7 +25,7 @@ namespace LibraryManagementSystemAPI.Controllers
             var result = _databaseHelper.ExecuteQuery(query);
             return Ok(result);
         }
-        // Post method for adding books 
+        // Post Method for adding books 
         [HttpPost]
         public IActionResult AddBook([FromBody] Book book)
         {

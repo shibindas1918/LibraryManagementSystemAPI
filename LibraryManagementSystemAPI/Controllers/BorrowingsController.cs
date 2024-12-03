@@ -16,7 +16,7 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper = databaseHelper;
         }
 
-        //Get method for getting all the borrowwing details 
+        //Get Method for getting all the Borrowwing Details 
         [HttpGet]
         public IActionResult GetAllBorrowings()
         {
@@ -24,7 +24,7 @@ namespace LibraryManagementSystemAPI.Controllers
             var result = _databaseHelper.ExecuteQuery(query);
             return Ok(result);
         }
-        // Post Method to add Borrowing details 
+        // Post Method to add Borrowing Details 
         [HttpPost]
         public IActionResult AddBorrowing([FromBody] Borrowing borrowing)
         {
@@ -41,7 +41,7 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper.ExecuteNonQuery(query, parameters);
             return Ok("Borrowing added successfully.");
         }
-        // Put Method for updating a particular borrowing details  
+        // Put Method for updating a particular Borrowing details  
         [HttpPut("{id}")]
         public IActionResult UpdateBorrowing(int id, [FromBody] Borrowing borrowing)
         {
@@ -56,7 +56,7 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper.ExecuteNonQuery(query, parameters);
             return Ok("Borrowing updated successfully.");
         }
-        // Delete method for deleting a particular by ID 
+        // Delete Method for Deleting a particular by ID 
         [HttpDelete("{id}")]
         public IActionResult DeleteBorrowing(int id)
         {
