@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementSystemAPI.Data
 {
-    public class Book
+    public class Books
     {
         public int BookId { get; set; }
         public string Title { get; set; }

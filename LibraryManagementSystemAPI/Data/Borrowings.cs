@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementSystemAPI.Data
 {
-    public class Borrowing
+    public class Book
     {
         public int BorrowingId { get; set; }
         public int MemberId { get; set; }

@@ -75,5 +75,34 @@ namespace LibraryManagementSystemAPI.Controllers
 
             return Ok("Books added successfully from CSV.");
         }
+        // Delete Method for Deleting a particular by ID 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBorrowing(int id)
+        {
+            string query = "DELETE FROM Books WHERE BookId = @BookId";
+            var parameters = new[] { new SqlParameter("@BookId", id) };
+
+            _databaseHelper.ExecuteNonQuery(query, parameters);
+            return Ok("Book has been deleted successfully.");
+        }
+
+        // Put Method for updating a particular Borrowing details  
+        [HttpPut("{id}")]
+        public IActionResult UpdateBook(int id, [FromBody] Books borrowing)
+        {
+            string query = "UPDATE Books SET Title =@Title, Author=@Author, ISBN = @ISBN, PublishedYear=@PublishedYear, CopiesAvailable=@CopiesAvailable  WHERE Bookid = @Bookid";
+            var parameters = new[]
+            {
+                new SqlParameter("@Bookid", id),
+               new SqlParameter("@Title", borrowing.Title),
+               new SqlParameter("@Author", borrowing.Author),
+               new SqlParameter("@ISBN", borrowing.ISBN),
+               new SqlParameter("@PublishedYear", borrowing.PublishedYear),
+
+            };
+
+            _databaseHelper.ExecuteNonQuery(query, parameters);
+            return Ok("Borrowing updated successfully.");
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace LibraryManagementSystemAPI.Controllers
         }
         // Post Method to add Borrowing Details 
         [HttpPost]
-        public IActionResult AddBorrowing([FromBody] Borrowing borrowing)
+        public IActionResult AddBorrowing([FromBody] Book borrowing)
         {
             string query = "INSERT INTO Borrowings (MemberId, BookId, BorrowDate, ReturnDate) VALUES (@MemberId, @BookId, @BorrowDate, @ReturnDate)";
             var parameters = new[]
@@ -43,7 +43,7 @@ namespace LibraryManagementSystemAPI.Controllers
         }
         // Put Method for updating a particular Borrowing details  
         [HttpPut("{id}")]
-        public IActionResult UpdateBorrowing(int id, [FromBody] Borrowing borrowing)
+        public IActionResult UpdateBorrowing(int id, [FromBody] Book borrowing)
         {
             string query = "UPDATE Borrowings SET ReturnDate = @ReturnDate WHERE BorrowingId = @BorrowingId";
             var parameters = new[]
