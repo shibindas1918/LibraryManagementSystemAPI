@@ -15,7 +15,9 @@ namespace LibraryManagementSystemAPI.Controllers
         {
             _databaseHelper = databaseHelper;
         }
+        
 
+        // Get Method for Getting all the Books 
         [HttpGet]
         public IActionResult GetAllBooks()
         {
@@ -23,7 +25,7 @@ namespace LibraryManagementSystemAPI.Controllers
             var result = _databaseHelper.ExecuteQuery(query);
             return Ok(result);
         }
-
+        // Post method for adding books 
         [HttpPost]
         public IActionResult AddBook([FromBody] Book book)
         {
@@ -41,6 +43,7 @@ namespace LibraryManagementSystemAPI.Controllers
             return Ok("Book added successfully");
         }
 
+        //Post Method for Adding Csv
 
         [HttpPost("upload-csv")]
         public IActionResult AddBooksFromCsv(IFormFile file)

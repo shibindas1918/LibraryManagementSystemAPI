@@ -16,6 +16,8 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper = databaseHelper;
         }
 
+        // Get Method for getting all the Members 
+
         [HttpGet]
         public IActionResult GetAllMembers()
         {
@@ -23,6 +25,8 @@ namespace LibraryManagementSystemAPI.Controllers
             var result = _databaseHelper.ExecuteQuery(query);
             return Ok(result);
         }
+
+        // Get Method  for getting a particular Member by id 
 
         [HttpGet("{id}")]
         public IActionResult GetMemberById(int id)
@@ -35,7 +39,7 @@ namespace LibraryManagementSystemAPI.Controllers
                 return NotFound("Member not found.");
             return Ok(result);
         }
-
+        // Post method to add a member 
         [HttpPost]
         public IActionResult AddMember([FromBody] Member member)
         {
@@ -51,6 +55,8 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper.ExecuteNonQuery(query, parameters);
             return Ok("Member added successfully.");
         }
+
+         // head method for Member 
         [HttpHead]
         public IActionResult Header(Member header)
         {
@@ -68,7 +74,7 @@ namespace LibraryManagementSystemAPI.Controllers
             return Ok("Header updated successfully.");
             
         }
-
+        // Method to update a Member by ID
         [HttpPut("{id}")]
         public IActionResult UpdateMember(int id, [FromBody] Member member)
         {
@@ -84,7 +90,7 @@ namespace LibraryManagementSystemAPI.Controllers
             _databaseHelper.ExecuteNonQuery(query, parameters);
             return Ok("Member updated successfully.");
         }
-
+        // Method to Delete a Member by ID 
         [HttpDelete("{id}")]
         public IActionResult DeleteMember(int id)
         {
