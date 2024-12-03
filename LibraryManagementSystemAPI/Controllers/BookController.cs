@@ -27,7 +27,7 @@ namespace LibraryManagementSystemAPI.Controllers
         }
         // Post Method for adding books 
         [HttpPost]
-        public IActionResult AddBook([FromBody] Book book)
+        public IActionResult AddBook([FromBody] Books book)
         {
             string query = "INSERT INTO Books (Title, Author, ISBN, PublishedYear, CopiesAvailable) VALUES (@Title, @Author, @ISBN, @PublishedYear, @CopiesAvailable)";
             var parameters = new[]
@@ -72,7 +72,6 @@ namespace LibraryManagementSystemAPI.Controllers
                     _databaseHelper.ExecuteNonQuery(query, parameters);
                 }
             }
-
             return Ok("Books added successfully from CSV.");
         }
         // Delete Method for Deleting a particular by ID 
