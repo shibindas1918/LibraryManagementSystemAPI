@@ -72,7 +72,7 @@ namespace LibraryManagementSystemAPI.Controllers
                     _databaseHelper.ExecuteNonQuery(query, parameters);
                 }
             }
-            return Ok("Books added successfully from CSV.");
+            return Ok("Book added successfully from CSV.");
         }
         // Delete Method for Deleting a particular by ID 
         [HttpDelete("{id}")]
@@ -101,7 +101,7 @@ namespace LibraryManagementSystemAPI.Controllers
             };
 
             _databaseHelper.ExecuteNonQuery(query, parameters);
-            return Ok("Borrowing updated successfully.");
+            return Ok("Borrowings updated successfully.");
         }
     }
 }
