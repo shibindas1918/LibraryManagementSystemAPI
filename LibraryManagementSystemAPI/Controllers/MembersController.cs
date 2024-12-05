@@ -35,7 +35,7 @@ namespace LibraryManagementSystemAPI.Controllers
             var parameters = new[] { new SqlParameter("@MemberId", id) };
 
             var result = _databaseHelper.ExecuteQuery(query, parameters);
-            if (result.Rows.Count == 0)
+            if (result.Count == 0)
                 return NotFound("Member not found.");
             return Ok(result);
         }

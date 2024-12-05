@@ -12,32 +12,34 @@ namespace LibraryManagementSystemAPI.Data
             _connectionString = connectionString;
         }
 
-        public DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
+        public List<Dictionary<string, object>> ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             try
             {
                 using (var conn = new SqlConnection(_connectionString))
+                using (var cmd = new SqlCommand(query, conn))
                 {
-                    using (var cmd = new SqlCommand(query, conn))
+                    if (parameters?.Length > 0)
                     {
-                        if (parameters?.Length > 0)//Check if parameters are not null and contain elements
-                        {
-                            cmd.Parameters.AddRange(parameters);
-                        }
+                        cmd.Parameters.AddRange(parameters);
+                    }
 
-                        using (var adapter = new SqlDataAdapter(cmd))
-                        {
-                            var dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            return dataTable;
-                        }
+                    using (var adapter = new SqlDataAdapter(cmd))
+                    {
+                        var dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable.AsEnumerable()
+                            .Select(row => dataTable.Columns.Cast<DataColumn>()
+                            .ToDictionary(column => column.ColumnName, column => row[column]))
+                            .ToList();
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Log the exception (example: using a logger or custom error handling)
-                throw new Exception($"Error executing query: {query}. Details: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
             }
         }
 
