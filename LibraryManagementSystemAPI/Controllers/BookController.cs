@@ -45,7 +45,7 @@ namespace LibraryManagementSystemAPI.Controllers
 
         //Post Method for Adding Csv
 
-        [HttpPost("upload-csv")]
+        [HttpPost("Upload-csv")]
         public IActionResult AddBooksFromCsv(IFormFile file)
         {
             if (file == null || file.Length == 0) return BadRequest("File is empty.");
