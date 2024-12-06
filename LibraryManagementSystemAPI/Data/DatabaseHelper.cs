@@ -12,6 +12,7 @@ namespace LibraryManagementSystemAPI.Data
             _connectionString = connectionString;
         }
 
+     //
         public List<Dictionary<string, object>> ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             try
@@ -44,7 +45,7 @@ namespace LibraryManagementSystemAPI.Data
         }
 
 
-
+     //
         public int ExecuteNonQuery(string query, SqlParameter[] parameters)
         {
             using (var connection = new SqlConnection(_connectionString))
